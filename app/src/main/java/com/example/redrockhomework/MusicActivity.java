@@ -1,6 +1,5 @@
 package com.example.redrockhomework;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
@@ -42,21 +41,29 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void init(){
+        //进度条上小绿点的位置
         tv_progress=(TextView) findViewById(R.id.tv_progress);
+        //进度条的总长度
         tv_total=(TextView) findViewById(R.id.tv_total);
+        //进度条的控件
         sb=(SeekBar) findViewById(R.id.sb);
+        //显示歌曲名称的控件
         name_song=(TextView) findViewById(R.id.song_name);
+
         findViewById(R.id.btn_play).setOnClickListener(this);
         findViewById(R.id.btn_pause).setOnClickListener(this);
         findViewById(R.id.btn_continue_play).setOnClickListener(this);
         findViewById(R.id.btn_exit).setOnClickListener(this);
+
         name=intent1.getStringExtra("name");
         name_song.setText(name);
+        //创建一个intent对象，从当前的Activity跳转到Service
         intent2=new Intent(this,MusicService.class);
+        //创建服务连接对象
         conn=new MyServiceConn();
+        //绑定服务
         bindService(intent2,conn,BIND_AUTO_CREATE);
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @RequiresApi(api= Build.VERSION_CODES.KITKAT)
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(progress==seekBar.getMax()){
@@ -79,10 +86,10 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         String position=intent1.getStringExtra("position");
         int i=parseInt(position);
         iv_music.setImageResource(frag1.icons[i]);
-        animator=ObjectAnimator.ofFloat(iv_music,"rotation",0f,360.0f);
-        animator.setDuration(10000);
-        animator.setInterpolator(new LinearInterpolator());
-        animator.setRepeatCount(-1);
+        animator=ObjectAnimator.ofFloat(iv_music,"rotation",0f,360.0f);//设置旋转动画
+        animator.setDuration(10000);//动画转一周为10秒
+        animator.setInterpolator(new LinearInterpolator());//匀速
+        animator.setRepeatCount(-1);//-1表示设置动画无线循环
     }
     public static Handler handler=new Handler(){
         @Override
@@ -123,7 +130,7 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         }
     };
 
-
+    //用于实现连接服务
     class MyServiceConn implements ServiceConnection{
         @Override
         public void onServiceConnected(ComponentName name, IBinder service){
@@ -135,13 +142,13 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
 
         }
     }
+    //判断服务是否被绑定
     private void unbind(boolean isUnbind){
         if(!isUnbind){
             musicControl.pausePlay();
-            unbindService(conn);
+            unbindService(conn);//解绑服务
         }
     }
-    @RequiresApi(api= Build.VERSION_CODES.KITKAT)
     @Override
     public void onClick(View v){
         switch (v.getId()){
