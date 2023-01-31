@@ -25,8 +25,10 @@ public class MusicService extends Service {
     @Override
     public void onCreate(){
         super.onCreate();
+        //创建音乐播放器
         player=new MediaPlayer();
     }
+    //添加计时器用于进度条
     public void addTimer(){
         if(timer==null){
             timer=new Timer();
@@ -48,7 +50,7 @@ public class MusicService extends Service {
         }
     }
     class MusicControl extends Binder{
-        public void play(int i){//String path
+        public void play(int i){
             Uri uri=Uri.parse("android.resource://"+getPackageName()+"/raw/"+"music"+i);
             try{
                 player.reset();
@@ -69,6 +71,7 @@ public class MusicService extends Service {
             player.seekTo(progress);
         }
     }
+    //销毁多媒体播放器
     @Override
     public void onDestroy(){
         super.onDestroy();

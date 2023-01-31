@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv1,tv2;
     private FragmentManager fm;
     private FragmentTransaction ft;
+    TextView responseText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ft=fm.beginTransaction();
         ft.replace(R.id.content,new frag1());
         ft.commit();
+        responseText=(TextView) findViewById(R.id.response_tv);
     }
     @Override
     public void onClick(View v){

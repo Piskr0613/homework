@@ -54,7 +54,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/btn_bg_selector"
-            android:text="播放音乐"/>
+            android:text="播放"/>
         <Button
             android:id="@+id/btn_pause"
             android:layout_width="0dp"
@@ -62,7 +62,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/btn_bg_selector"
-            android:text="暂停播放"/>
+            android:text="暂停"/>
         <Button
             android:id="@+id/btn_continue_play"
             android:layout_width="0dp"
@@ -70,7 +70,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/btn_bg_selector"
-            android:text="继续播放"/>
+            android:text="继续"/>
         <Button
             android:id="@+id/btn_exit"
             android:layout_width="0dp"

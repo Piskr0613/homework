@@ -22,10 +22,11 @@ public class frag1 extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.music_list,null);
-        ListView listView=view.findViewById(R.id.lv);
-        MyBaseAdapter adapter=new MyBaseAdapter();
-        listView.setAdapter(adapter);
+        view=inflater.inflate(R.layout.music_list,null);//绑定布局
+        ListView listView=view.findViewById(R.id.lv);//创建ListView列表并绑定控件
+        MyBaseAdapter adapter=new MyBaseAdapter();//实例化一个适配器
+        listView.setAdapter(adapter);//列表设置适配器
+        //列表元素的点击监听器
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
