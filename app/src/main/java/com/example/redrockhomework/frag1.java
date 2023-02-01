@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 public class frag1 extends Fragment implements View.OnClickListener {
     private EditText editText;
     private TextView responseText;
@@ -26,6 +27,23 @@ public class frag1 extends Fragment implements View.OnClickListener {
         Button button=view.findViewById(R.id.search_btn);
         button.setOnClickListener(this);
         responseText=view.findViewById(R.id.response_text);
+    @Override
+    public View onCreateView(final LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+        view=inflater.inflate(R.layout.music_list,null);//绑定布局
+        ListView listView=view.findViewById(R.id.lv);//创建ListView列表并绑定控件
+        MyBaseAdapter adapter=new MyBaseAdapter();//实例化一个适配器
+        listView.setAdapter(adapter);//列表设置适配器
+        //列表元素的点击监听器
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent=new Intent(frag1.this.getContext(),MusicActivity.class);
+                intent.putExtra("name",name[position]);
+                intent.putExtra("position",String.valueOf(position));
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 

@@ -84,7 +84,11 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         ImageView iv_music=(ImageView) findViewById(R.id.iv_music);
         String position=intent1.getStringExtra("position");
         int i=parseInt(position);
+
         iv_music.setImageResource(frag2.icons[i]);
+
+        iv_music.setImageResource(frag1.icons[i]);
+
         animator=ObjectAnimator.ofFloat(iv_music,"rotation",0f,360.0f);//设置旋转动画
         animator.setDuration(10000);//动画转一周为10秒
         animator.setInterpolator(new LinearInterpolator());//匀速
