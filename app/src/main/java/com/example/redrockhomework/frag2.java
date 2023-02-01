@@ -11,11 +11,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class frag1 extends Fragment {
+public class frag2 extends Fragment {
     private View view;
     public String[] name={"歌曲1","歌曲2","歌曲3"};
     public static int[] icons={R.drawable.music0,R.drawable.music1,R.drawable.music2};
@@ -30,7 +28,7 @@ public class frag1 extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent intent=new Intent(frag1.this.getContext(),MusicActivity.class);
+                Intent intent=new Intent(frag2.this.getContext(),MusicActivity.class);
                 intent.putExtra("name",name[position]);
                 intent.putExtra("position",String.valueOf(position));
                 startActivity(intent);
@@ -57,7 +55,7 @@ public class frag1 extends Fragment {
 
         @Override
         public View getView(int i, View convertView, ViewGroup parent) {
-            View view=View.inflate(frag1.this.getContext(),R.layout.item_layout,null);
+            View view=View.inflate(frag2.this.getContext(),R.layout.item_layout,null);
             TextView tv_name=view.findViewById(R.id.item_name);
             ImageView iv=view.findViewById(R.id.iv);
             tv_name.setText(name[i]);

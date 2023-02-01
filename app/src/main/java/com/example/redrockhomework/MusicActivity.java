@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -85,7 +84,7 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         ImageView iv_music=(ImageView) findViewById(R.id.iv_music);
         String position=intent1.getStringExtra("position");
         int i=parseInt(position);
-        iv_music.setImageResource(frag1.icons[i]);
+        iv_music.setImageResource(frag2.icons[i]);
         animator=ObjectAnimator.ofFloat(iv_music,"rotation",0f,360.0f);//设置旋转动画
         animator.setDuration(10000);//动画转一周为10秒
         animator.setInterpolator(new LinearInterpolator());//匀速
